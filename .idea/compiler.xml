@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="galaxy-registry-nacos" />
+        <module name="galaxy-rocketmq" />
+        <module name="galaxy-distributed-transaction" />
+        <module name="galaxy-alibaba-common" />
+        <module name="galaxy-dubbo" />
+        <module name="galaxy-config-nacos" />
+        <module name="galaxy-sentinel" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="galaxy-alibaba-common" options="-parameters" />
+      <module name="galaxy-config-nacos" options="-parameters" />
+      <module name="galaxy-distributed-transaction" options="-parameters" />
+      <module name="galaxy-dubbo" options="-parameters" />
+      <module name="galaxy-registry-nacos" options="-parameters" />
+      <module name="galaxy-rocketmq" options="-parameters" />
+      <module name="galaxy-sentinel" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.galaxy.alibaba</groupId>
+    <artifactId>galaxy-alibaba-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging><!--父模块打包类型必须为pom-->
+
+    <!-- parent指明继承关系，给出被继承的父项目的具体信息-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 子模块列表  -->
+    <modules>
+        <module>galaxy-alibaba-common</module>
+        <module>galaxy-registry-nacos</module>
+        <module>galaxy-dubbo</module>
+        <module>galaxy-sentinel</module>
+        <module>galaxy-rocketmq</module>
+        <module>galaxy-distributed-transaction</module>
+        <module>galaxy-config-nacos</module>
+    </modules>
+
+    <!-- 版本管理  -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <lombok.version>1.18.24</lombok.version>
+    </properties>
+
+    <!--  dependencyManagement的作用其实相当于一个对所依赖jar包进行版本管理的管理器  -->
+    <!--  dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖。如果不在子项目中声明依赖，是不会从父项目中继承下来的；只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。  -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!--     引入spring-cloud-alibaba-dependencies，统一所有spring-cloud-alibaba相关组件版本，这里采用的spring-cloud-alibaba版本是2.2.6.RELEASE，官网说明对应的spring-boot版本是2.6.1     -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.6.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 真正依赖  -->
+    <dependencies>
+        <!-- 引入lombok，在各个子项目中都会使用到，所以这里没有放到dependencyManagement标签中，放到这里全局引入 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>Shilin</name>
+            <id>Shilin.Qu</id>
+            <email>sky123shilin@outlook.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+</project>
